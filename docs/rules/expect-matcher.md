@@ -14,6 +14,8 @@ or when a matcher function was not called:
 
 ```js
 expect(true).toBeDefined
+expect(true).not.toBeDefined
+expect(true).withContext("context")
 ```
 
 
@@ -23,4 +25,5 @@ The following patterns are not warnings:
 expect("something").toEqual("something");
 expect([1, 2, 3]).toEqual([1, 2, 3]);
 expect(true).toBeDefined();
+expect(true).withContext("context").toBeDefined();
 ```

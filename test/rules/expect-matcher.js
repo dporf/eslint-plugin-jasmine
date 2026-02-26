@@ -10,7 +10,8 @@ eslintTester.run('expect-matcher', rule, {
     'expect("something").toEqual("else");',
     'expect(true).toBeDefined();',
     'expect([1, 2, 3]).toEqual([1, 2, 3]);',
-    'expect(undefined).not.toBeDefined();'
+    'expect(undefined).not.toBeDefined();',
+    'expect(true).withContext("context").toBeDefined();'
   ],
 
   invalid: [
@@ -32,6 +33,22 @@ eslintTester.run('expect-matcher', rule, {
     },
     {
       code: 'expect(true).toBeDefined;',
+      errors: [
+        {
+          message: 'Expect must have a corresponding matcher call.'
+        }
+      ]
+    },
+    {
+      code: 'expect(true).not.toBeDefined;',
+      errors: [
+        {
+          message: 'Expect must have a corresponding matcher call.'
+        }
+      ]
+    },
+    {
+      code: 'expect(true).withContext("context");',
       errors: [
         {
           message: 'Expect must have a corresponding matcher call.'
